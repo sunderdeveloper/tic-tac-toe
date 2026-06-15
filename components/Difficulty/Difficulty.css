@@ -1,0 +1,20 @@
+.challengeTxt {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #2563eb;
+  font-weight: 500;
+  text-align: center;
+  margin: 1vw auto 0.5vw;
+}
+.selectionTxt {
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1vw;
+}
+.tagLine {
+  color: #aba9a9;
+  font-size: 15px;
+  text-align: center;
+}

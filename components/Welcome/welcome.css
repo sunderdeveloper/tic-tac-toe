@@ -1,0 +1,128 @@
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+}
+
+.welcomeBefore {
+  font-size: 2vw;
+  color: #fff;
+  text-align: center;
+  margin: 2vw auto 0;
+  font-weight: 700;
+}
+.welcome {
+  font-size: 5vw;
+  color: #fff;
+  text-align: center;
+  margin: 0vw auto;
+  font-weight: 800;
+}
+.welcome span:first-child {
+  color: #2563eb;
+}
+.welcome span:last-child {
+  color: #f97316;
+}
+.description {
+  text-align: center;
+  font-size: 1.2vw;
+  color: #9c9c9c;
+
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 0.5vw;
+}
+.leftLine {
+  position: absolute;
+  background: linear-gradient(to right, #2563eb, #477ff81c);
+  width: 4vw;
+  height: 0.1vw;
+  left: -28%;
+  top: 0.6vw;
+}
+.rightLine {
+  position: absolute;
+  background: linear-gradient(to left, #f97316, #f974161d);
+  width: 4vw;
+  height: 0.1vw;
+  right: -28%;
+  top: 0.6vw;
+}
+.highlited {
+  text-align: center;
+  font-size: 1.2vw;
+  color: #f97316;
+}
+.centerImage {
+  max-width: 400px;
+  width: 100%;
+  margin: 1vw auto;
+}
+.centerImage img {
+  width: 100%;
+}
+.startGame {
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vw;
+  max-width: 300px;
+  width: 100%;
+  padding: 1vw;
+  font-size: 1.2vw;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 1vw;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.random {
+  position: absolute;
+  font-family: "Cause", cursive;
+  font-size: 8vw;
+  font-weight: 900;
+  opacity: 0.4;
+  color: #0b1224;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.random span:first-child {
+  position: inherit;
+  top: 8vw;
+  right: 23vw;
+}
+.random span:nth-child(2) {
+  position: inherit;
+  top: 24vw;
+  left: 20vw;
+}
+.random span:nth-child(3) {
+  position: inherit;
+  top: 28vw;
+  right: 18vw;
+}
+.random span:last-child {
+  position: inherit;
+  top: 8vw;
+  left: 23vw;
+}
+.bottomTagLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aba9a9;
+  gap: 0.6vw;
+  margin: 1vw 0;
+}
+.star {
+  color: rgb(253, 218, 21);
+}
