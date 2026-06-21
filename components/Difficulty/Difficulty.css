@@ -1,3 +1,10 @@
+.difficultyScreenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vw;
+  justify-content: center;
+}
 .challengeTxt {
   font-size: 15px;
   text-transform: uppercase;
@@ -17,4 +24,12 @@
   color: #aba9a9;
   font-size: 15px;
   text-align: center;
+}
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vw;
+  max-width: 60vw;
+  width: 100%;
+  margin: 2vw auto 1vw;
 }

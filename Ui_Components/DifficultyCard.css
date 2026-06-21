@@ -1,0 +1,61 @@
+.card {
+  padding: 2vw;
+  color: #fff;
+  border: 2px solid #47474797;
+  border-radius: 1vw;
+  text-align: center;
+  cursor: pointer;
+}
+.cardImage {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0vw auto 1vw;
+}
+.image {
+  font-size: 3.5vw;
+  color: #2563eb;
+}
+.difficultyName {
+  font-size: 2vw;
+  text-transform: uppercase;
+  color: #2563eb;
+  font-weight: 500;
+  font-family: inter;
+  margin-bottom: 0.5vw;
+}
+
+.tagLine {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ababab;
+  padding: 0 1vw;
+  margin-bottom: 1vw;
+}
+.boardSizes {
+  border: 2px solid #47474797;
+  padding: 0.5vw;
+  border-radius: 0.5vw;
+}
+.boardSizes p {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #2563eb;
+  margin-bottom: 0.5vw;
+}
+.boardSizes ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+.boardSizes ul li {
+  font-size: 14px;
+  color: #ababab;
+}
