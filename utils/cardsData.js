@@ -6,7 +6,7 @@ export const cardsData = [
   {
     id: 1,
     difficulty: "Easy",
-    boardSize: [3, 4],
+    boardSize: [2, 3, 4],
     tagLine: "Perfect for beginners! Smaller boards, simple and fun.",
     icon: BsEmojiSmile,
     color: "#2563EB",

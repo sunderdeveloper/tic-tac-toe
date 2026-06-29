@@ -1,9 +1,13 @@
 import "./DifficultyCard.css";
 import { cardsData } from "../utils/cardsData.js";
 import { useState } from "react";
+import BoardModal from "./BoardModal";
 
 const DifficultyCard = () => {
-  const [hovered, setHovered] = useState(false);
+  const [hovered, setHovered] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [boardSizes, setBoardSizes] = useState([]);
+
   return (
     <>
       {cardsData.map((card) => {
@@ -12,9 +16,21 @@ const DifficultyCard = () => {
           <div
             className="card"
             key={card.id}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            style={hovered ? { borderColor: card.color } : {}}
+            onMouseEnter={() => setHovered(card.id)}
+            onMouseLeave={() => setHovered(null)}
+            style={
+              hovered === card.id
+                ? {
+                    borderColor: card.color,
+                    transform: "scale(1.05)",
+                    transition: "transform 0.3s ease",
+                  }
+                : {}
+            }
+            onClick={() => {
+              setShowModal(true);
+              setBoardSizes(card.boardSize);
+            }}
           >
             <div className="cardImage" style={{ borderColor: card.color }}>
               <Icon className="image" style={{ color: card.color }} />
@@ -41,6 +57,8 @@ const DifficultyCard = () => {
           </div>
         );
       })}
+
+      {showModal && <BoardModal sizes={boardSizes} showModal={showModal} />}
     </>
   );
 };

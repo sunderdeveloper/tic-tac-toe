@@ -1,0 +1,80 @@
+.boardSizeContainer {
+  position: absolute;
+  width: 80vw;
+  top: 2vw;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  backdrop-filter: blur(3px);
+  background-color: #0f172a;
+  /* pointer-events: none;
+  transform: scale(0.6) translateY(-50%);
+  opacity: 0; */
+  border: 1px solid #2a283e;
+}
+.closeIcon {
+  position: absolute;
+  color: #fff;
+  font-size: 2vw;
+  right: 1vw;
+  top: 1vw;
+  cursor: pointer;
+}
+.selectionTxt {
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1vw;
+}
+.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.boxesContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vw;
+  padding: 2vw;
+  width: 100%;
+  align-items: stretch;
+}
+.box {
+  text-align: center;
+  border: 2px solid #47474797;
+  padding: 2vw;
+  border-radius: 1vw;
+  cursor: pointer;
+}
+.box:hover {
+  transform: scale(1.05);
+  border: 2px solid #2563eb;
+  transition: all 0.3s ease;
+}
+.boxesContainer div .boxMain {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.boxesContainer div .boxMain > div {
+  width: 36px;
+  height: 36px;
+  border: 2px solid #2563eb;
+  box-sizing: border-box;
+}
+.cellsNum {
+  font-size: 2vw;
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 1vw;
+  font-family: "Inter", sans-serif;
+}
+.cellsCount {
+  font-size: 1.6vw;
+  color: #2563eb;
+  font-weight: 600;
+  margin-top: 1vw;
+  font-family: "Inter", sans-serif;
+}
