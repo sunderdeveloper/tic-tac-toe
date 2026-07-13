@@ -1,6 +1,6 @@
 .boardSizeContainer {
   position: absolute;
-  width: 80vw;
+  max-width: 80vw;
   top: 2vw;
   left: 0;
   right: 0;
@@ -11,6 +11,8 @@
   transform: scale(0.6) translateY(-50%);
   opacity: 0; */
   border: 1px solid #2a283e;
+  padding: 2vw;
+  border-radius: 1vw;
 }
 .closeIcon {
   position: absolute;
@@ -46,8 +48,14 @@
   padding: 2vw;
   border-radius: 1vw;
   cursor: pointer;
+  position: relative;
 }
 .box:hover {
+  transform: scale(1.05);
+  border: 2px solid #2563eb;
+  transition: all 0.3s ease;
+}
+.hovered {
   transform: scale(1.05);
   border: 2px solid #2563eb;
   transition: all 0.3s ease;
@@ -59,8 +67,8 @@
   gap: 2px;
 }
 .boxesContainer div .boxMain > div {
-  width: 36px;
-  height: 36px;
+  width: 2.5vw;
+  height: 2.5vw;
   border: 2px solid #2563eb;
   box-sizing: border-box;
 }
@@ -77,4 +85,105 @@
   font-weight: 600;
   margin-top: 1vw;
   font-family: "Inter", sans-serif;
+}
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2vw;
+  padding: 0 2vw;
+}
+.leftBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw 3vw;
+  border: 2px solid #47474797;
+  /* flex: 1; */
+  border-radius: 0.5vw;
+  color: #fff;
+  gap: 1vw;
+  font-size: 1vw;
+}
+.bulbIcon {
+  font-size: 2vw;
+  color: gold;
+}
+.gameStart {
+  background-color: #2563eb;
+  border: none;
+  border-radius: 0.5vw;
+  font-size: 1.5vw;
+  padding: 1vw 3vw;
+  color: #fff;
+  cursor: not-allowed;
+}
+.checkIcon {
+  position: absolute;
+  right: 1vw;
+  top: 1vw;
+  color: #2563eb;
+  font-size: 1.5vw;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .boardSizeContainer {
+    max-width: 90vw;
+    padding: 4vw;
+    border-radius: 2vw;
+  }
+  .closeIcon {
+    font-size: 20px;
+    right: 4vw;
+    top: 4vw;
+  }
+  .selectionTxt {
+    font-size: 30px !important;
+  }
+  .boxesContainer {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .box {
+    padding: 4vw;
+    border-radius: 2vw;
+  }
+
+  .boxesContainer div .boxMain > div {
+    width: 8vw;
+    height: 8vw;
+    border-width: 3px;
+  }
+  .cellsNum {
+    font-size: 16px;
+    margin-bottom: 2vw;
+  }
+  .cellsCount {
+    font-size: 18px;
+    margin-top: 2vw;
+  }
+  .checkIcon {
+    font-size: 20px;
+    right: 4vw;
+    top: 4vw;
+  }
+  .leftBlock {
+    padding: 2vw 4vw;
+    border-radius: 1vw;
+    font-size: 3vw;
+  }
+  .modalFooter {
+    flex-direction: column;
+    gap: 4vw;
+  }
+  .gameStart {
+    font-size: 4vw;
+    padding: 2vw 4vw;
+    border-radius: 1vw;
+    cursor: pointer;
+  }
 }

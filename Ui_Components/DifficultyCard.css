@@ -59,3 +59,32 @@
   font-size: 14px;
   color: #ababab;
 }
+
+@media (max-width: 767px) {
+  .card {
+    padding: 4vw;
+    border-radius: 2vw;
+  }
+  .cardImage {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2vw;
+  }
+  .image {
+    font-size: 6vw;
+  }
+  .difficultyName {
+    font-size: 22px;
+    margin-bottom: 1vw;
+  }
+  .tagLine {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0 2vw;
+    margin-bottom: 2vw;
+  }
+  .boardSizes {
+    padding: 1vw;
+    border-radius: 1vw;
+  }
+}

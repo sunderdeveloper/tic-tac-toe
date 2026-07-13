@@ -33,3 +33,24 @@
   width: 100%;
   margin: 2vw auto 1vw;
 }
+.back {
+  position: absolute;
+  font-size: 1.5vw;
+  color: #e0dddd97;
+  left: 4vw;
+  top: 4vw;
+  cursor: pointer;
+}
+.back:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+@media (max-width: 767px) {
+  .cardsContainer {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+  .selectionTxt {
+    font-size: 30px !important;
+  }
+}

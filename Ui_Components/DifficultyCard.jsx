@@ -8,6 +8,10 @@ const DifficultyCard = () => {
   const [showModal, setShowModal] = useState(false);
   const [boardSizes, setBoardSizes] = useState([]);
 
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
   return (
     <>
       {cardsData.map((card) => {
@@ -58,7 +62,7 @@ const DifficultyCard = () => {
         );
       })}
 
-      {showModal && <BoardModal sizes={boardSizes} showModal={showModal} />}
+      {showModal && <BoardModal sizes={boardSizes} closeModal={closeModal} />}
     </>
   );
 };

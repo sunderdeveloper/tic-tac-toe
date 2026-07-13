@@ -1,10 +1,14 @@
 import React from "react";
 import "./Difficulty.css";
 import DifficultyCard from "../../Ui_Components/DifficultyCard";
+import { FaArrowLeft } from "react-icons/fa6";
 
-const DifficultyScreen = () => {
+const DifficultyScreen = ({ setCurrentPage }) => {
   return (
     <>
+      <span onClick={() => setCurrentPage("welcome")} className="back">
+        <FaArrowLeft />
+      </span>
       <div className="difficultyScreenContainer">
         <p className="challengeTxt">Choose your challenge </p>
         <h1 className="selectionTxt">Select Difficulty</h1>

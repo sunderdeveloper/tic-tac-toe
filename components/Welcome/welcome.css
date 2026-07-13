@@ -126,3 +126,36 @@
 .star {
   color: rgb(253, 218, 21);
 }
+@media (max-width: 767px) {
+  .welcomeBefore {
+    font-size: 18px;
+  }
+  .welcome {
+    font-size: 40px;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .startGame {
+    font-size: 16px;
+    padding: 10px;
+    max-width: 200px;
+    gap: 8px;
+  }
+  .bottomTagLine {
+    margin: 2vw 0;
+    gap: 8px;
+  }
+  .leftLine {
+    width: 6vw;
+    height: 0.1vw;
+    left: -28px;
+    top: 2.6vw;
+  }
+  .rightLine {
+    width: 6vw;
+    height: 0.1vw;
+    right: -28px;
+    top: 2.6vw;
+  }
+}
