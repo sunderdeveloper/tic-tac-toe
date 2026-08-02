@@ -3,14 +3,14 @@ import { cardsData } from "../utils/cardsData.js";
 import { useState } from "react";
 import BoardModal from "./BoardModal";
 
-const DifficultyCard = () => {
+const DifficultyCard = ({ setCurrentPage }) => {
   const [hovered, setHovered] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [boardSizes, setBoardSizes] = useState([]);
 
   const closeModal = () => {
     setShowModal(false);
-  }
+  };
 
   return (
     <>
@@ -62,7 +62,13 @@ const DifficultyCard = () => {
         );
       })}
 
-      {showModal && <BoardModal sizes={boardSizes} closeModal={closeModal} />}
+      {showModal && (
+        <BoardModal
+          sizes={boardSizes}
+          closeModal={closeModal}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
     </>
   );
 };

@@ -1,7 +1,8 @@
 .boardSizeContainer {
   position: absolute;
-  max-width: 80vw;
-  top: 2vw;
+  width: 100%;
+  height: 100%;
+  top: 0vw;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -10,7 +11,7 @@
   /* pointer-events: none;
   transform: scale(0.6) translateY(-50%);
   opacity: 0; */
-  border: 1px solid #2a283e;
+  /* border: 1px solid #2a283e; */
   padding: 2vw;
   border-radius: 1vw;
 }
@@ -92,7 +93,8 @@
   justify-content: center;
   width: 100%;
   gap: 2vw;
-  padding: 0 2vw;
+  padding: 0 2vw 2vw;
+  /* margin-bottom: 2vw; */
 }
 .leftBlock {
   display: flex;

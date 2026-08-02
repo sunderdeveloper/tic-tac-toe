@@ -16,7 +16,7 @@ const DifficultyScreen = ({ setCurrentPage }) => {
           Pick a difficulty level to start your Tic Tac Toe adventure!
         </p>
         <div className="cardsContainer">
-          <DifficultyCard />
+          <DifficultyCard setCurrentPage={setCurrentPage} />
         </div>
       </div>
     </>

@@ -11,9 +11,7 @@ function App() {
       {currentPage === "DifficultyScreen" && (
         <DifficultyScree setCurrentPage={setCurrentPage} />
       )}
-      {/* {currentPage === "game" && (
-        <Game />
-      )} */}
+      {currentPage === "game" && <Game setCurrentPage={setCurrentPage} />}
     </>
   );
 }

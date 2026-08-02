@@ -3,7 +3,7 @@ import { useState } from "react";
 import { IoBulbOutline } from "react-icons/io5";
 import { FaCircleCheck } from "react-icons/fa6";
 
-const BoardModal = ({ sizes, closeModal }) => {
+const BoardModal = ({ sizes, closeModal, setCurrentPage }) => {
   const [selectedSize, setSelectedSize] = useState(null);
 
   const handleBoxClick = (index) => {
@@ -61,6 +61,7 @@ const BoardModal = ({ sizes, closeModal }) => {
             style={{
               cursor: selectedSize !== null ? "pointer" : "not-allowed",
             }}
+            onClick={() => setCurrentPage("game")}
           >
             {" "}
             Start Game
