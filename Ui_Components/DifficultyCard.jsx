@@ -7,6 +7,7 @@ const DifficultyCard = ({ setCurrentPage }) => {
   const [hovered, setHovered] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [boardSizes, setBoardSizes] = useState([]);
+  const [difficulty, setDifficulty] = useState("");
 
   const closeModal = () => {
     setShowModal(false);
@@ -34,6 +35,7 @@ const DifficultyCard = ({ setCurrentPage }) => {
             onClick={() => {
               setShowModal(true);
               setBoardSizes(card.boardSize);
+              setDifficulty(card.difficulty);
             }}
           >
             <div className="cardImage" style={{ borderColor: card.color }}>
@@ -67,6 +69,7 @@ const DifficultyCard = ({ setCurrentPage }) => {
           sizes={boardSizes}
           closeModal={closeModal}
           setCurrentPage={setCurrentPage}
+          difficulty={difficulty}
         />
       )}
     </>

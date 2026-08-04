@@ -2,8 +2,9 @@ import "./BoardModal.css";
 import { useState } from "react";
 import { IoBulbOutline } from "react-icons/io5";
 import { FaCircleCheck } from "react-icons/fa6";
+import { RxDashboard } from "react-icons/rx";
 
-const BoardModal = ({ sizes, closeModal, setCurrentPage }) => {
+const BoardModal = ({ sizes, closeModal, setCurrentPage, difficulty }) => {
   const [selectedSize, setSelectedSize] = useState(null);
 
   const handleBoxClick = (index) => {
@@ -18,8 +19,13 @@ const BoardModal = ({ sizes, closeModal, setCurrentPage }) => {
         <span className="closeIcon" onClick={closeModal}>
           &times;
         </span>
+        <RxDashboard className="Boardicon" />
+
         <h1 className="selectionTxt">Select Board Size</h1>
-        <p className="tagLine">choose your board dimensions for medium level</p>
+        <p className="tagLine">
+          choose your board dimensions for{" "}
+          <span className="difficultyTxt">{difficulty}</span> level
+        </p>
 
         <div className="boxesContainer">
           {sizes.map((box, index) => {
@@ -61,7 +67,7 @@ const BoardModal = ({ sizes, closeModal, setCurrentPage }) => {
             style={{
               cursor: selectedSize !== null ? "pointer" : "not-allowed",
             }}
-            onClick={() => setCurrentPage("game")}
+            onClick={() => selectedSize !== null && setCurrentPage("game")}
           >
             {" "}
             Start Game

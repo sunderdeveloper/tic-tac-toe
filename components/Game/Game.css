@@ -76,6 +76,7 @@
 .boardBlock {
   display: grid;
   border: 1px solid #cccccc2d;
+  width: fit-content;
 }
 .boardBlock input {
   width: 40px;
@@ -83,4 +84,5 @@
   background: none;
   border: 2px solid #cccccc2d;
   border-radius: 5px;
+  cursor: default;
 }

@@ -129,6 +129,18 @@
   font-size: 1.5vw;
   display: none;
 }
+.difficultyTxt {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f97316;
+}
+.Boardicon {
+  width: fit-content;
+  font-size: 50px;
+  color: #2563eb;
+  margin: 1vw auto;
+  display: flex;
+}
 
 @media (max-width: 767px) {
   .boardSizeContainer {
