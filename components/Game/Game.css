@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   max-width: 85%;
-  margin: 0 auto;
+  margin: 0 auto 2vw;
   padding: 2vw 0 1.5vw;
   border-bottom: 1px solid #cccccc2d;
 }
@@ -42,7 +42,8 @@
 }
 .gameDetails {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
   justify-content: space-between;
   max-width: 85%;
   margin: 0 auto;
@@ -73,16 +74,155 @@
   font-weight: 600;
   margin-top: 2px;
 }
+.gameBoardBlock {
+  display: grid;
+  grid-template-columns: 20% 50% 20%;
+  max-width: 85%;
+  width: 100%;
+  margin: 0 auto;
+  gap: 2vw;
+}
 .boardBlock {
   display: grid;
-  border: 1px solid #cccccc2d;
+  /* border: 1px solid #cccccc2d; */
   width: fit-content;
+  width: 100%;
+  aspect-ratio: 1;
+  height: 80vh;
+  gap: 5px;
 }
-.boardBlock input {
-  width: 40px;
-  height: 40px;
-  background: none;
-  border: 2px solid #cccccc2d;
-  border-radius: 5px;
+.boardBlock .boardCell {
+  width: 100%;
+  height: 100%;
+  /* background: none; */
+  border: none;
+  border-radius: 10px;
   cursor: default;
+  background: #131f39;
+  font-size: clamp(16px, 3vw, 50px);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.playerDetails {
+  /* border: 1px solid #cccccc2d; */
+  padding: 1vw;
+  color: #fff;
+  border-radius: 1vw;
+}
+.playersBlock > h3,
+.scoreBoard > h3 {
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-bottom: 1vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+.playerX {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #2563eb;
+  border-radius: 10px;
+  padding: 16px 10px;
+  font-size: 16px;
+  margin-bottom: 1vw;
+  position: relative;
+}
+.playerX .playerIcon {
+  color: #000;
+  font-weight: 600;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  background: #2563eb;
+  border-radius: 30px;
+}
+.vsText {
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+
+  width: 70%;
+  margin: 0 auto 1vw;
+}
+.vsText::before {
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #848484b9);
+  left: 0;
+  top: 8px;
+}
+.vsText::after {
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to left, transparent, #848484b9);
+  right: 0;
+  top: 8px;
+}
+.playerO {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #f97316;
+  border-radius: 10px;
+  padding: 16px 10px;
+  font-size: 16px;
+  margin-bottom: 1vw;
+  position: relative;
+}
+.playerO .playerIcon {
+  color: #f97316;
+  font-weight: 600;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  background: #0f172a;
+  border-radius: 30px;
+}
+.playerX span {
+  font-size: 12px;
+  background: #2564eb2e;
+  color: #2b6cfa;
+  padding: 2px 8px;
+  border: 1px solid #2564ebae;
+  border-radius: 4px;
+  position: absolute;
+  right: 1vw;
+}
+.playerO span {
+  font-size: 12px;
+  background: #f974162e;
+  color: #ff6e07;
+  padding: 2px 8px;
+  border: 1px solid #f9741676;
+  border-radius: 4px;
+  position: absolute;
+  right: 1vw;
+}
+.playerX .scoreBoardNum {
+  font-size: 21px;
+  font-weight: 800;
+  color: #4079f7;
+  position: absolute;
+  right: 1vw;
+}
+.playerO .scoreBoardNum {
+  font-size: 21px;
+  font-weight: 800;
+  color: #f97316;
+  position: absolute;
+  right: 1vw;
+}
+.cellIconX {
+  color: #2b6cfa;
+  font-size: inherit;
+}
+.cellIconO {
+  color: #f97316;
 }
