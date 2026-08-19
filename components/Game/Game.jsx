@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Game.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { RiResetLeftFill } from "react-icons/ri";
@@ -7,6 +7,7 @@ import { RxDashboard } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { IoMdTime } from "react-icons/io";
 import { FaRegCircle } from "react-icons/fa";
+import { MdError } from "react-icons/md";
 
 const Game = ({ setCurrentPage }) => {
   const boardNumber = 6;
@@ -14,17 +15,54 @@ const Game = ({ setCurrentPage }) => {
     Array(boardNumber * boardNumber).fill(null),
   );
   const [currentPlayer, setCurrentPlayer] = useState("X");
+  const [totalSeconds, settotalSeconds] = useState(0);
+  const [showError, setShowError] = useState(false);
+  const [currentTurn, setCurrentTurn] = useState("X");
+
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
 
   const handleClick = (index) => {
-    setCellValue((prev) => {
-      const newBoard = [...prev];
-      newBoard[index] = currentPlayer;
+    if (cellValue[index] === null) {
+      setCellValue((prev) => {
+        const newBoard = [...prev];
+        newBoard[index] = currentPlayer;
 
-      return newBoard;
-    });
-
-    setCurrentPlayer((prev) => (prev === "X" ? "O" : "X"));
+        return newBoard;
+      });
+      setCurrentPlayer((prev) => (prev === "X" ? "O" : "X"));
+    }
+    cellValue[index] !== null && setShowError(true);
+    !showError && handleCurrentPlayer();
   };
+
+  const handleRestart = () => {
+    settotalSeconds(0);
+    setCellValue(Array(boardNumber * boardNumber).fill(null));
+    setCurrentTurn("X");
+    setCurrentPlayer("X");
+  };
+
+  const clearShowError = () => {
+    if (!showError) return;
+
+    setTimeout(() => {
+      setShowError(false);
+    }, 2500);
+  };
+  clearShowError();
+
+  const handleCurrentPlayer = () => {
+    setCurrentTurn((prev) => (prev === "X" ? "O" : "X"));
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      settotalSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -35,7 +73,7 @@ const Game = ({ setCurrentPage }) => {
         >
           <FaArrowLeft /> Home
         </button>
-        <button className="restart">
+        <button className="restart" onClick={handleRestart}>
           <RiResetLeftFill /> Restart
         </button>
       </div>
@@ -57,17 +95,25 @@ const Game = ({ setCurrentPage }) => {
             </div>
           </div>
           <div className="playerBlock">
-            <IoMdClose className="icon" />
+            {currentTurn === "X" ? (
+              <IoMdClose className="iconX" />
+            ) : (
+              <FaRegCircle className="iconO" />
+            )}
+
             <div className="playerText">
               <span>Current Turn</span>
-              <h3>Player X</h3>
+              <h3>Player {currentTurn}</h3>
             </div>
           </div>
           <div className="timerBlock">
             <IoMdTime className="icon" />
             <div className="timerText">
               <span>TIMER</span>
-              <h3>00:00</h3>
+              <h3>
+                <span>{minutes.toString().padStart(2, "0")}</span>:
+                <span>{seconds.toString().padStart(2, "0")}</span>
+              </h3>
             </div>
           </div>
         </div>
@@ -123,6 +169,14 @@ const Game = ({ setCurrentPage }) => {
               <h3 className="scoreBoardNum">2</h3>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className={`errorMessage ${showError ? "showError" : ""}`}>
+        <MdError className="errorIcon" />
+        <div className="errorText">
+          <p className="msg">Cell already occupied!</p>
+          <span>You can't change the move once its placed</span>
         </div>
       </div>
     </>
