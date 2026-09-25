@@ -1,14 +1,20 @@
 import "./BoardModal.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoBulbOutline } from "react-icons/io5";
 import { FaCircleCheck } from "react-icons/fa6";
 import { RxDashboard } from "react-icons/rx";
+import { AppContext } from "../context/GameContext";
 
-const BoardModal = ({ sizes, closeModal, setCurrentPage, difficulty }) => {
+const BoardModal = ({ sizes, closeModal }) => {
   const [selectedSize, setSelectedSize] = useState(null);
 
-  const handleBoxClick = (index) => {
+  const { setCurrentPage, difficulty, setSelectedDimension } =
+    useContext(AppContext);
+
+  const handleBoxClick = (index, box) => {
+    // console.log(index, box);
     setSelectedSize(index);
+    setSelectedDimension(box);
   };
 
   const cellSize = window.innerWidth <= 767 ? "8vw" : "2.5vw";
@@ -33,7 +39,7 @@ const BoardModal = ({ sizes, closeModal, setCurrentPage, difficulty }) => {
               <div
                 key={index}
                 className={`box ${selectedSize === index ? "hovered" : ""}`}
-                onClick={() => handleBoxClick(index)}
+                onClick={() => handleBoxClick(index, box)}
               >
                 <FaCircleCheck
                   className="checkIcon"

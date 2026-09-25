@@ -1,0 +1,46 @@
+.gameDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  max-width: 85%;
+  margin: 0 auto;
+  padding: 1vw 0;
+  color: #fff;
+  height: 100%;
+  /* border-bottom: 1px solid #cccccc2d; */
+}
+.icon,
+.iconX {
+  font-size: 30px;
+  color: #2563eb;
+}
+.iconO {
+  font-size: 30px;
+  color: #f97316;
+}
+.difficultyBlock,
+.boardSizesBlock,
+.playerBlock,
+.timerBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon ~ div span {
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.icon ~ div h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+.timerText h3 span {
+  font-size: inherit;
+  font-weight: inherit;
+  color: #fff;
+}

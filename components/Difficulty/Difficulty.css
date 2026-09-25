@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(72px, 8vh, 100px) 24px 32px;
   justify-content: center;
 }
 .challengeTxt {
@@ -11,46 +13,74 @@
   color: #2563eb;
   font-weight: 500;
   text-align: center;
-  margin: 1vw auto 0.5vw;
+  margin: 0 auto 8px;
 }
 .selectionTxt {
-  font-size: 40px;
+  font-size: clamp(32px, 4vw, 48px);
   text-transform: uppercase;
   color: #fff;
   text-align: center;
-  margin-bottom: 1vw;
+  margin-bottom: 12px;
 }
-.tagLine {
+.difficultyScreenContainer > .tagLine {
   color: #aba9a9;
-  font-size: 15px;
+  font-size: clamp(14px, 1.2vw, 16px);
   text-align: center;
+  line-height: 1.5;
+  max-width: 560px;
+  margin: 0;
 }
 .cardsContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1vw;
-  max-width: 60vw;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.5vw, 24px);
+  max-width: 1120px;
   width: 100%;
-  margin: 2vw auto 1vw;
+  margin: clamp(24px, 4vh, 40px) auto 0;
 }
 .back {
   position: absolute;
-  font-size: 1.5vw;
+  font-size: clamp(20px, 1.5vw, 26px);
   color: #e0dddd97;
-  left: 4vw;
-  top: 4vw;
+  left: clamp(20px, 4vw, 56px);
+  top: clamp(20px, 4vw, 48px);
   cursor: pointer;
 }
 .back:hover {
   transform: scale(1.1);
   transition: all 0.3s ease;
 }
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .cardsContainer {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 700px;
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .difficultyScreenContainer {
+    justify-content: flex-start;
+    padding: 84px 20px 28px;
   }
   .selectionTxt {
-    font-size: 30px !important;
+    font-size: clamp(28px, 8vw, 36px);
+    margin-bottom: 8px;
+  }
+  .difficultyScreenContainer > .tagLine {
+    max-width: 400px;
+  }
+  .cardsContainer {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 420px;
+    gap: 16px;
+    margin-top: 24px;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .difficultyScreenContainer {
+    justify-content: flex-start;
+    padding-top: 72px;
   }
 }

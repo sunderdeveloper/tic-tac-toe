@@ -2,8 +2,12 @@ import React from "react";
 import "./Difficulty.css";
 import DifficultyCard from "../../Ui_Components/DifficultyCard";
 import { FaArrowLeft } from "react-icons/fa6";
+import { useContext } from "react";
+import { AppContext } from "../../context/GameContext";
 
-const DifficultyScreen = ({ setCurrentPage }) => {
+const DifficultyScreen = () => {
+  const { setCurrentPage } = useContext(AppContext);
+
   return (
     <>
       <span onClick={() => setCurrentPage("welcome")} className="back">
@@ -16,7 +20,7 @@ const DifficultyScreen = ({ setCurrentPage }) => {
           Pick a difficulty level to start your Tic Tac Toe adventure!
         </p>
         <div className="cardsContainer">
-          <DifficultyCard setCurrentPage={setCurrentPage} />
+          <DifficultyCard />
         </div>
       </div>
     </>

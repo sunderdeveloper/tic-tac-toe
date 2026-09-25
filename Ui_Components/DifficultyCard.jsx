@@ -1,13 +1,15 @@
 import "./DifficultyCard.css";
 import { cardsData } from "../utils/cardsData.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import BoardModal from "./BoardModal";
+import { AppContext } from "../context/GameContext.jsx";
 
-const DifficultyCard = ({ setCurrentPage }) => {
+const DifficultyCard = () => {
   const [hovered, setHovered] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [boardSizes, setBoardSizes] = useState([]);
-  const [difficulty, setDifficulty] = useState("");
+
+  const { setDifficulty } = useContext(AppContext);
 
   const closeModal = () => {
     setShowModal(false);
@@ -64,14 +66,7 @@ const DifficultyCard = ({ setCurrentPage }) => {
         );
       })}
 
-      {showModal && (
-        <BoardModal
-          sizes={boardSizes}
-          closeModal={closeModal}
-          setCurrentPage={setCurrentPage}
-          difficulty={difficulty}
-        />
-      )}
+      {showModal && <BoardModal sizes={boardSizes} closeModal={closeModal} />}
     </>
   );
 };

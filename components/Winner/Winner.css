@@ -1,0 +1,32 @@
+.winnerBlock {
+  text-align: center;
+}
+.winnerBlock img {
+  max-width: 400px;
+  width: 100%;
+  margin: 16px auto;
+  /* text-align: center; */
+}
+.winnerPlayerTxt {
+  font-size: 60px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  /* font-family: "Inter"; */
+}
+.winnerIcon {
+  font-family: "Inter";
+  color: #2563eb;
+}
+.winnerText {
+  color: #f97316;
+}
+.winner_Txt_Message {
+  font-size: 20px;
+  color: #ccc;
+  font-family: "Inter";
+  text-transform: capitalize;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}

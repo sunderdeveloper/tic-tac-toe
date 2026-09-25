@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Game.css";
-import { FaArrowLeft } from "react-icons/fa6";
-import { RiResetLeftFill } from "react-icons/ri";
-import { BsBarChartFill } from "react-icons/bs";
-import { RxDashboard } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import { IoMdTime } from "react-icons/io";
 import { FaRegCircle } from "react-icons/fa";
-import { MdError } from "react-icons/md";
+import { AppContext } from "../../context/GameContext";
+import ErrorMessage from "./ErrorMessage.jsx";
+import GameDetails from "./GameDetails.jsx";
+import PlayerDetails from "./PlayerDetails.jsx";
+import GameHeader from "./GameHeader.jsx";
 
-const Game = ({ setCurrentPage }) => {
-  const boardNumber = 6;
+const Game = () => {
+  const { selectedDimension } = useContext(AppContext);
+  const boardNumber = selectedDimension;
   const [cellValue, setCellValue] = useState(
     Array(boardNumber * boardNumber).fill(null),
   );
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [totalSeconds, settotalSeconds] = useState(0);
   const [showError, setShowError] = useState(false);
-  const [currentTurn, setCurrentTurn] = useState("X");
+  const [currentTurn, setCurrentTurn] = useState(true);
 
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
@@ -31,30 +31,26 @@ const Game = ({ setCurrentPage }) => {
         return newBoard;
       });
       setCurrentPlayer((prev) => (prev === "X" ? "O" : "X"));
+      setCurrentTurn(!currentTurn);
     }
     cellValue[index] !== null && setShowError(true);
-    !showError && handleCurrentPlayer();
   };
 
   const handleRestart = () => {
     settotalSeconds(0);
     setCellValue(Array(boardNumber * boardNumber).fill(null));
-    setCurrentTurn("X");
+    setCurrentTurn(true);
     setCurrentPlayer("X");
   };
 
-  const clearShowError = () => {
+  useEffect(() => {
     if (!showError) return;
 
-    setTimeout(() => {
+    const errorTimer = setTimeout(() => {
       setShowError(false);
     }, 2500);
-  };
-  clearShowError();
-
-  const handleCurrentPlayer = () => {
-    setCurrentTurn((prev) => (prev === "X" ? "O" : "X"));
-  };
+    return () => clearTimeout(errorTimer);
+  }, [showError]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -64,60 +60,62 @@ const Game = ({ setCurrentPage }) => {
     return () => clearInterval(timer);
   }, []);
 
+  for (let row = 0; row < boardNumber; row++) {
+    // console.log(row);
+    const single = row * boardNumber;
+    const rowCells = [];
+    for (let col = 0; col < boardNumber; col++) {
+      rowCells.push(single + col);
+    }
+    const values = rowCells.map((index) => cellValue[index]);
+
+    const firstVal = values[0];
+
+    if (firstVal !== null && values.every((val) => val === firstVal)) {
+      // console.log(firstVal, "wins");
+    }
+  }
+
+  for (let col = 0; col < boardNumber; col++) {
+    const colCells = [];
+    for (let row = 0; row < boardNumber; row++) {
+      colCells.push(row * boardNumber + col);
+    }
+
+    // console.log(colCells);
+    const colValues = colCells.map((index) => cellValue[index]);
+
+    const firstVal = colValues[0];
+
+    if (firstVal !== null && colValues.every((val) => val === firstVal)) {
+      console.log(firstVal, "wins");
+    }
+  }
+
+  let diagonalCells = [];
+  for (let diagonal = 0; diagonal < boardNumber; diagonal++) {
+    diagonalCells.push(diagonal * boardNumber + diagonal);
+  }
+  const firstVal = diagonalCells[0];
+
+  if (firstVal !== null && diagonalCells.every((val) => val === firstVal)) {
+    // console.log(firstVal, "wins");
+  }
+
+  let diagonalCells2 = [];
+  for (let d2Val = 0; d2Val < boardNumber; d2Val++) {
+    diagonalCells2.push(boardNumber - 1 + boardNumber * d2Val - d2Val);
+  }
+
   return (
     <>
-      <div className="gameHeader">
-        <button
-          className="Home"
-          onClick={() => setCurrentPage("DifficultyScreen")}
-        >
-          <FaArrowLeft /> Home
-        </button>
-        <button className="restart" onClick={handleRestart}>
-          <RiResetLeftFill /> Restart
-        </button>
-      </div>
-
+      <GameHeader handleRestart={handleRestart} />
       <div className="gameBoardBlock">
-        <div className="gameDetails">
-          <div className="difficultyBlock">
-            <BsBarChartFill className="icon" />
-            <div className="difficultyTextBlock">
-              <span>Difficulty</span>
-              <h3>Medium</h3>
-            </div>
-          </div>
-          <div className="boardSizesBlock">
-            <RxDashboard className="icon" />
-            <div className="boardSizeTexts">
-              <span>Board Size</span>
-              <h3>5 x 5</h3>
-            </div>
-          </div>
-          <div className="playerBlock">
-            {currentTurn === "X" ? (
-              <IoMdClose className="iconX" />
-            ) : (
-              <FaRegCircle className="iconO" />
-            )}
-
-            <div className="playerText">
-              <span>Current Turn</span>
-              <h3>Player {currentTurn}</h3>
-            </div>
-          </div>
-          <div className="timerBlock">
-            <IoMdTime className="icon" />
-            <div className="timerText">
-              <span>TIMER</span>
-              <h3>
-                <span>{minutes.toString().padStart(2, "0")}</span>:
-                <span>{seconds.toString().padStart(2, "0")}</span>
-              </h3>
-            </div>
-          </div>
-        </div>
-
+        <GameDetails
+          currentTurn={currentTurn}
+          minutes={minutes}
+          seconds={seconds}
+        />
         <div
           className="boardBlock"
           style={{
@@ -139,46 +137,11 @@ const Game = ({ setCurrentPage }) => {
             </div>
           ))}
         </div>
-        <div className="playerDetails">
-          <div className="playersBlock">
-            <h3>players</h3>
-            <div className="playerX">
-              <IoMdClose className="playerIcon" />
-              <p>Player X</p>
-              <span className="shadeTxt">You</span>
-            </div>
-            <div className="vsText">
-              <p>VS</p>
-            </div>
-            <div className="playerO">
-              <FaRegCircle className="playerIcon" />
-              <p>Player O</p>
-              <span>Opponent</span>
-            </div>
-            <div className="scoreBoard">
-              <h3>score board</h3>
-            </div>
-            <div className="playerX">
-              <IoMdClose className="playerIcon" />
-              <p>Player X</p>
-              <h3 className="scoreBoardNum">4</h3>
-            </div>
-            <div className="playerO">
-              <FaRegCircle className="playerIcon" />
-              <p>Player O</p>
-              <h3 className="scoreBoardNum">2</h3>
-            </div>
-          </div>
-        </div>
+
+        <PlayerDetails />
       </div>
 
-      <div className={`errorMessage ${showError ? "showError" : ""}`}>
-        <MdError className="errorIcon" />
-        <div className="errorText">
-          <p className="msg">Cell already occupied!</p>
-          <span>You can't change the move once its placed</span>
-        </div>
-      </div>
+      <ErrorMessage showError={showError} />
     </>
   );
 };

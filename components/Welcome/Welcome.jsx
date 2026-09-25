@@ -1,8 +1,11 @@
 import "./welcome.css";
 import { FaPlay } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
+import { AppContext } from "../../context/GameContext";
+import { useContext } from "react";
 
-const Welcome = ({ setCurrentPage }) => {
+const Welcome = () => {
+  const { setCurrentPage } = useContext(AppContext);
   return (
     <div className="welcomeContainer">
       <p className="welcomeBefore">Welcome to</p>

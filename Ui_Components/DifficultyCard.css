@@ -1,59 +1,58 @@
 .card {
-  padding: 2vw;
+  padding: clamp(16px, 2vw, 28px);
   color: #fff;
   border: 2px solid #47474797;
-  border-radius: 1vw;
+  border-radius: 14px;
   text-align: center;
   cursor: pointer;
 }
 .cardImage {
-  width: 100px;
-  height: 100px;
+  width: clamp(72px, 8vw, 100px);
+  height: clamp(72px, 8vw, 100px);
   border: 1px solid #2563eb;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0vw auto 1vw;
+  margin: 0 auto 16px;
 }
 .image {
-  font-size: 3.5vw;
+  font-size: clamp(34px, 3.5vw, 48px);
   color: #2563eb;
 }
 .difficultyName {
-  font-size: 2vw;
+  font-size: clamp(22px, 2vw, 30px);
   text-transform: uppercase;
   color: #2563eb;
   font-weight: 500;
   font-family: inter;
-  margin-bottom: 0.5vw;
+  margin-bottom: 8px;
 }
-
 .tagLine {
-  font-size: 16px;
+  font-size: clamp(14px, 1.1vw, 16px);
   line-height: 1.5;
   color: #ababab;
-  padding: 0 1vw;
-  margin-bottom: 1vw;
+  padding: 0;
+  margin-bottom: 16px;
 }
 .boardSizes {
   border: 2px solid #47474797;
-  padding: 0.5vw;
-  border-radius: 0.5vw;
+  padding: 10px;
+  border-radius: 8px;
 }
 .boardSizes p {
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 500;
   color: #2563eb;
-  margin-bottom: 0.5vw;
+  margin-bottom: 8px;
 }
 .boardSizes ul {
   list-style: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1vw;
+  gap: clamp(8px, 1vw, 16px);
 }
 .boardSizes ul li {
   font-size: 14px;
@@ -62,29 +61,10 @@
 
 @media (max-width: 767px) {
   .card {
-    padding: 4vw;
-    border-radius: 2vw;
-  }
-  .cardImage {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 2vw;
-  }
-  .image {
-    font-size: 6vw;
-  }
-  .difficultyName {
-    font-size: 22px;
-    margin-bottom: 1vw;
-  }
-  .tagLine {
-    font-size: 16px;
-    line-height: 1.5;
-    padding: 0 2vw;
-    margin-bottom: 2vw;
+    padding: 20px;
+    border-radius: 12px;
   }
   .boardSizes {
-    padding: 1vw;
-    border-radius: 1vw;
+    padding: 10px;
   }
 }
